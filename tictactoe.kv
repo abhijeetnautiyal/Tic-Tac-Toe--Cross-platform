@@ -1,0 +1,120 @@
+Sm:
+    MenuScreen:
+    GameScreen:
+    SelectDifficultyScreen:
+    EasyDifficultyScreen:
+    HardDifficultyScreen:
+
+
+<GameGrid>:
+    id: tic
+    name:'tic'
+    cols: 3
+
+<GameGridEasy>:
+    id: ticeasy
+    name:'ticeasy'
+    cols: 3
+
+<GameGridHard>:
+    id: tichard
+    name:'tichard'
+    cols: 3
+
+
+<GameScreen>:
+    name:'game'
+    BoxLayout:
+        orientation: 'vertical'
+        GameGrid:
+            padding: root.height*0.01 , root.width*0.01
+            size_hint: None,None
+            width: root.width
+            height: root.height* 0.9
+        BoxLayout:
+            Button:
+                text:'Main menu'
+                on_release: app.root.current = 'menu'
+
+            Button:
+                text:'Quit '
+                on_release: app.stop()
+
+<MenuScreen>:
+    name:'menu'
+    AnchorLayout:
+        
+        GridLayout:
+            rows:2
+            cols:1
+            Button:
+                orientation: 'horizontal'
+                text: '2 player'
+                font_size :30
+                on_release:app.root.current = 'game'
+
+            Button:
+                text: 'vs CPU'
+                font_size :30
+                on_release:app.root.current = 'difficulty'
+
+
+<SelectDifficultyScreen>:
+    name:'difficulty'
+    GridLayout:
+        rows:2
+        cols:1
+        Button:
+            orientation: 'horizontal'
+            text: 'Easy :)'
+            font_size :30
+            on_release:app.root.current = 'easy'
+
+        Button:
+            text: 'Hard x( '
+            font_size :30
+            on_release:app.root.current = 'hard'
+
+<EasyDifficultyScreen>:
+    name: 'easy'
+
+    BoxLayout:
+        orientation: 'vertical'
+        GameGridEasy:
+            padding: root.height*0.01 , root.width*0.01
+            size_hint: None,None
+            width: root.width
+            height: root.height* 0.9
+        BoxLayout:
+            Button:
+                text:'Main menu'
+                on_release: app.root.current = 'menu'
+
+            Button:
+                text:'Quit '
+                on_release: app.stop()
+
+
+<HardDifficultyScreen>:
+    name: 'hard'
+    BoxLayout:
+        orientation: 'vertical'
+        GameGridHard:
+            padding: root.height*0.01 , root.width*0.01
+            size_hint: None,None
+            width: root.width
+            height: root.height* 0.9
+
+        BoxLayout:
+            Button:
+                text:'Main menu'
+                on_release: app.root.current = 'menu'
+
+            Button:
+                text:'Quit '
+                on_release: app.stop()
+
+<GridEntry>:
+    font_size: self.height
+
+
